@@ -23,7 +23,7 @@ public class Player2 : MonoBehaviour
     {
         GetInput();
 
-        //if (Mathf.Abs(input.x) < 0.1f && Mathf.Abs(input.y) < 0.1f) return;
+        if (Mathf.Abs(input.x) < 0.1f && Mathf.Abs(input.y) < 0.1f) return;
 
         Rotate();
         Move();
