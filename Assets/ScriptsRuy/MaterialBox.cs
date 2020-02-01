@@ -19,11 +19,23 @@ public class MaterialBox : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (col.transform.tag == "Player")
         {
-            GameObject obj = Instantiate(materialPrefab, col.transform.position, col.transform.rotation);
-            col.gameObject.GetComponent<Player>().PutInContainer(obj);
-            Debug.Log(this.transform.name);
+            Player player = col.transform.GetComponent<Player>();
+
+            if (Input.GetButtonDown("Fire" + player.id.ToString()))
+            {
+                if (player.IsContainerEmpty())
+                {
+                    GameObject obj = Instantiate(materialPrefab, col.transform.position, materialPrefab.transform.rotation);
+                    col.gameObject.GetComponent<Player>().PutInContainer(obj);
+                    Debug.Log(materialPrefab.name + " inside container, player" + player.id);
+                }
+                else
+                    Debug.Log("Busy hands, player" + player.id);
+
+            }
+            
         }
         
     }
