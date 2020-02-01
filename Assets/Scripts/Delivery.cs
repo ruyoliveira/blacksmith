@@ -24,16 +24,14 @@ public class Delivery : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Player player = col.gameObject.GetComponent<Player>();
-            GameObject givenProduct = player.Give();
-            if (givenProduct != null)
+            GameObject product = player.CheckInsideContainer();
+            if (product != null)
             {
-                if (orders.CompleteOrder(givenProduct))
+                if (orders.CompleteOrder(product))
                 {
-                    Destroy(givenProduct);
+                    player.DestroyObjectInContainer();
                 }
             }
-            Debug.Log(this.transform.name);
         }
-
     }
 }

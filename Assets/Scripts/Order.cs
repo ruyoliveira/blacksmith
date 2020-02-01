@@ -25,7 +25,7 @@ public class Order : MonoBehaviour
     // New orders
     void CreateOrder()
     {
-        orders.Add(100);
+        orders.Add((Random.Range(0, 1) + 1) * 100 );
         GameObject obj = Instantiate(orderPrefab, transform.position, transform.rotation, transform);
     }
 
