@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         GetInput();
 
-        if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
+        if (Mathf.Abs(input.x) < 0.1f && Mathf.Abs(input.y) < 0.1f) return;
 
         CalculateDirection();
         Rotate();
