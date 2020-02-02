@@ -15,7 +15,7 @@ public class DebugMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        runBoost = Input.GetKey(KeyCode.LeftShift) ? 4.0f : 1.0f;
+        runBoost = Input.GetKey(KeyCode.LeftShift) ? 10.0f : 5.0f;
         Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
         Vector3 rotDir = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")).normalized;
 

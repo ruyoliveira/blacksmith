@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum StationStatus { Idle, Occupied, Working, Done};
-public class Station : MonoBehaviour
+
+public class HUDWorldAnchor : MonoBehaviour
 {
-    public StationStatus status;
-    
+    public Transform target;
+    public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.Translate(target.position - this.transform.position + offset);
     }
 
     // Update is called once per frame
