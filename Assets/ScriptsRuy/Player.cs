@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     {
         this.container = obj;
         obj.transform.SetParent(containerAnchor);
+        obj.transform.SetPositionAndRotation(containerAnchor.position, containerAnchor.rotation);
     }
 
     public void DestroyObjectInContainer()

@@ -17,8 +17,7 @@ public class Table : MonoBehaviour
     }
     public void PlaceObj(Transform target)
     {
-        objOverTable.transform.position = target.position;
-        objOverTable.transform.rotation = target.rotation;
+        objOverTable.transform.SetPositionAndRotation( target.position, target.rotation);
         objOverTable.transform.parent = target;
     }
     public void ClearTable()
@@ -43,7 +42,7 @@ public class Table : MonoBehaviour
                 else if (objOverTable != null)
                 {
                     player.PutInContainer(objOverTable);
-                    PlaceObj(player.transform);
+                    //PlaceObj(player.transform);
                     Debug.Log(objOverTable.name + " in player " + player.id + "hands");
                     ClearTable();
                }
