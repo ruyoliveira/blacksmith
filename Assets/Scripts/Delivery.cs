@@ -21,15 +21,19 @@ public class Delivery : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (col.transform.tag == "Player")
         {
-            Player player = col.gameObject.GetComponent<Player>();
-            GameObject product = player.CheckInsideContainer();
-            if (product != null)
+            Player player = col.transform.GetComponent<Player>();
+
+            if (Input.GetButtonDown("Fire" + player.id.ToString()))
             {
-                if (orders.CompleteOrder(product))
+                GameObject product = player.CheckInsideContainer();
+                if (product != null)
                 {
-                    player.DestroyObjectInContainer();
+                    if (orders.CompleteOrder(product))
+                    {
+                        player.DestroyObjectInContainer();
+                    }
                 }
             }
         }

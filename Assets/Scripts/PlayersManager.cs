@@ -6,7 +6,7 @@ public class PlayersManager : MonoBehaviour
 {
     public GameObject[] playerPrefab;
 
-    private int maxPlayers = 2;
+    private int maxPlayers = 4;
     private bool[] instatiatedPlayers;
 
     // Start is called before the first frame update
