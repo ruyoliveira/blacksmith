@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayersManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefab;
 
     private int maxPlayers = 2;
     private bool[] instatiatedPlayers;
@@ -12,7 +12,6 @@ public class PlayersManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(Input.GetJoystickNames());
         instatiatedPlayers = new bool[maxPlayers];
     }
 
@@ -23,7 +22,7 @@ public class PlayersManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire" + i) && !instatiatedPlayers[i])
             {
-                GameObject player = Instantiate(playerPrefab, transform.position, transform.rotation, transform);
+                GameObject player = Instantiate(playerPrefab[i], transform.position, transform.rotation, transform);
                 player.GetComponent<DebugMove>().input = i;
                 player.transform.Find("PlayerActionCollider").GetComponent<Player>().id = i;
                 instatiatedPlayers[i] = true;
