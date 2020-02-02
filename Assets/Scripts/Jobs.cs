@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Jobs : MonoBehaviour
 {
+    public GameObject scoreObject;
     public GameObject[] orderPrefabs;
     public float newOrderInterval = 15.0f;
 
     public List<int> orders;
+    private Score score;
 
     // Start is called before the first frame update
     void Start()
     {
         orders = new List<int>();
+        score = scoreObject.GetComponent<Score>();
         InvokeRepeating("CreateOrder", 1.0f, newOrderInterval);
     }
 
@@ -38,6 +41,7 @@ public class Jobs : MonoBehaviour
         // Check if there's a order pending for this product
         if (orders.Contains(productId)) 
         {
+            score.OrderCompleted();
             RemoveOrder(orders.IndexOf(productId));
             return true;
         }
@@ -45,6 +49,12 @@ public class Jobs : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void MissedOrder(int orderIndex)
+    {
+        score.OrderMissed();
+        RemoveOrder(orderIndex);
     }
 
     public void RemoveOrder(int orderIndex)

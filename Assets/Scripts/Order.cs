@@ -31,7 +31,7 @@ public class Order : MonoBehaviour
     {
         if (timeToCompleteOrder < 1)
         {
-            orders.RemoveOrder(transform.GetSiblingIndex());
+            orders.MissedOrder(transform.GetSiblingIndex());
         }
         else
         {

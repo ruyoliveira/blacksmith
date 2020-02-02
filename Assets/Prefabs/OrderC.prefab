@@ -631,5 +631,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productId: 300
-  timeToCompleteOrder: 20
+  timeToCompleteOrder: 15
   textObject: {fileID: 3518221380714660170}
