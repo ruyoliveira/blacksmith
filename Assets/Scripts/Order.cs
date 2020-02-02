@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Order : MonoBehaviour
 {
-    public GameObject orderPrefab;
-    public float newOrderInterval = 15.0f;
+    public int productId;
+    public int timeToCompleteOrder = 20;
+    public GameObject textObject;
 
-    public List<int> orders; 
+    private TextMeshProUGUI textMeshPro;
+    private Jobs orders;
 
     // Start is called before the first frame update
     void Start()
     {
-        orders = new List<int>();
-        InvokeRepeating("CreateOrder", 1.0f, newOrderInterval);
+        textMeshPro = textObject.GetComponent<TextMeshProUGUI>();
+        orders = transform.parent.GetComponent<Jobs>();
+
+        InvokeRepeating("Countdown", 0.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -22,33 +27,16 @@ public class Order : MonoBehaviour
         
     }
 
-    // New orders
-    void CreateOrder()
+    void Countdown()
     {
-        orders.Add((Random.Range(0, 1) + 1) * 100 );
-        GameObject obj = Instantiate(orderPrefab, transform.position, transform.rotation, transform);
-    }
-
-    // Delivered Order
-    public bool CompleteOrder(GameObject product)
-    {
-        int productId = product.GetComponent<Id>().id;
-        // Check if there's a order pending for this product
-        if (orders.Contains(productId)) 
+        if (timeToCompleteOrder < 1)
         {
-            RemoveOrder(orders.LastIndexOf(productId));
-            return true;
+            orders.RemoveOrder(transform.GetSiblingIndex());
         }
         else
         {
-            return false;
+            textMeshPro.SetText(timeToCompleteOrder.ToString());
+            timeToCompleteOrder -= 1;
         }
-    }
-
-    void RemoveOrder(int orderIndex)
-    {
-        int completedOrderIndex = orders.LastIndexOf(orderIndex);
-        orders.RemoveAt(orderIndex);
-        Destroy(transform.GetChild(orderIndex).gameObject);
     }
 }

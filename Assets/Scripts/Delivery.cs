@@ -5,12 +5,12 @@ using UnityEngine;
 public class Delivery : MonoBehaviour
 {
     public GameObject jobs;
-    private Order orders;
+    private Jobs orders;
 
     // Start is called before the first frame update
     void Start()
     {
-        orders = jobs.GetComponent<Order>();
+        orders = jobs.GetComponent<Jobs>();
     }
 
     // Update is called once per frame
