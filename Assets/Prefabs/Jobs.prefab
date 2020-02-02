@@ -112,9 +112,9 @@ MonoBehaviour:
   scoreObject: {fileID: 8625679436091038554, guid: 45d7218cca976c04b9eb9fabd6a22718,
     type: 3}
   orderPrefabs:
-  - {fileID: 4004861486556811166, guid: ee5e8ab7496500844b6d26d0269b93d1, type: 3}
-  - {fileID: 4004861486556811166, guid: 82e908d181c4cbb4791e49c650e55475, type: 3}
-  - {fileID: 4004861486556811166, guid: 624eadff40742ee46911e522aa3afc8f, type: 3}
+  - {fileID: 6023059088945473508, guid: 512104e2493acf44a98f2d29cba8d24b, type: 3}
+  - {fileID: 8867095433285419205, guid: 7cd14ef38c2875b4fbd5b9e595026dd5, type: 3}
+  - {fileID: 2471423711625907353, guid: c95b76a5505615245a39ada151f07e6f, type: 3}
   orderDissapear: 1
   newOrderInterval: 15
   orders: 
