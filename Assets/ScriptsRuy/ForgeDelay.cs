@@ -8,6 +8,7 @@ public class ForgeDelay : Station
 {
     public Dictionary<int, GameObject> recipes;
     public GameObject[] productPrefabs;
+    public Animator _anim;
 
     public float timer;
     public float jobDuration;
@@ -32,6 +33,7 @@ public class ForgeDelay : Station
         switch(status)
         {
             case StationStatus.Working:
+                _anim.enabled = true;
                 if (timer <= jobDuration)
                     timer += Time.deltaTime;
                 else
@@ -44,6 +46,15 @@ public class ForgeDelay : Station
                     
 
                 break;
+            case StationStatus.Idle:
+                _anim.enabled = false;
+                break;
+            case StationStatus.Done:
+                _anim.enabled = false;
+                break;
+
+
+
 
         }
         UpdateHUD();
@@ -108,6 +119,7 @@ public class ForgeDelay : Station
                     {
                         col.gameObject.GetComponent<Player>().PutInContainer(producedProduct);
                         status = StationStatus.Idle;
+                        _anim.enabled = false;
 
                     }
 

@@ -17,6 +17,7 @@ public class AnvilInteractive : Station
     GameObject producedProduct;
     public GameObject hudParent;
     public Image fillingImage;
+    public Animator _anim;
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +108,7 @@ public class AnvilInteractive : Station
                 }
                 else if (status == StationStatus.Working)
                 {
-
+                    _anim.SetTrigger("Hit");
                     gauge += incrementPerHit;
                 }
                 if (status == StationStatus.Done)

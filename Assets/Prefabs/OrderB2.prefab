@@ -472,7 +472,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8867095433285419205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0892ac14f912174ba2ba5bc289f5c17, type: 3}
+  m_Script: {fileID: 11500000, guid: 59215dab9c76db34ba0e5a0f487971ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   productId: 200
@@ -610,13 +610,13 @@ MonoBehaviour:
   m_margin: {x: 95.009735, y: 16.679474, z: 95.71478, w: 25.73145}
   m_textInfo:
     textComponent: {fileID: 1914376618415349423}
-    characterCount: 0
+    characterCount: 2
     spriteCount: 0
     spaceCount: 0
-    wordCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
