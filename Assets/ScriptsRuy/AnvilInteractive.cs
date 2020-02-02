@@ -4,44 +4,48 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ForgeDelay : Station
+public class AnvilInteractive : Station
 {
+    
     public Dictionary<int, GameObject> recipes;
+    public int[] sourceIds;
     public GameObject[] productPrefabs;
 
-    public float timer;
-    public float jobDuration;
+    public float gauge;
+    public float incrementPerHit;
     GameObject recipeResult;
     GameObject producedProduct;
     public GameObject hudParent;
     public Image fillingImage;
-    public Image doneIcon;
 
     // Start is called before the first frame update
     void Start()
     {
         this.recipes = new Dictionary<int, GameObject>();
-        this.recipes.Add(1, productPrefabs[0]);
-        this.recipes.Add(2, productPrefabs[1]);
-        this.recipes.Add(3, productPrefabs[2]);
+        this.recipes.Add(sourceIds[0], productPrefabs[0]);
+        this.recipes.Add(sourceIds[1], productPrefabs[1]);
+        this.recipes.Add(sourceIds[2], productPrefabs[2]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(status)
+        switch (status)
         {
             case StationStatus.Working:
-                if (timer <= jobDuration)
-                    timer += Time.deltaTime;
-                else
+
+
+
+                gauge -= Time.deltaTime * incrementPerHit;
+                gauge= gauge > 0.0f ? gauge:0.0f;
+                if (gauge >= 1.0f)
                 {
                     status = StationStatus.Done;
                     producedProduct = Instantiate(recipeResult, transform.position + Vector3.up, recipeResult.transform.rotation);
 
-                    timer = 0.0f;
+                    gauge = 0.0f;
                 }
-                    
+
 
                 break;
 
@@ -61,14 +65,13 @@ public class ForgeDelay : Station
         if(status == StationStatus.Idle)
         {
             hudParent.SetActive(false);
-            doneIcon.gameObject.SetActive(false);
 
         }
         else if (status == StationStatus.Working)
         {
             if (!hudParent.activeInHierarchy) 
                 hudParent.SetActive(true);
-            fillingImage.fillAmount = timer / jobDuration;
+            fillingImage.fillAmount =  gauge;
         }
         else if (status == StationStatus.Done)
         {
@@ -102,6 +105,11 @@ public class ForgeDelay : Station
                         Debug.Log("Empty hands, Player" + player.id);
                     }
                 }
+                else if (status == StationStatus.Working)
+                {
+
+                    gauge += incrementPerHit;
+                }
                 if (status == StationStatus.Done)
                 {
                     if (player.IsContainerEmpty())
@@ -111,6 +119,14 @@ public class ForgeDelay : Station
 
                     }
 
+                }
+            }
+            if (Input.GetButtonUp("Fire" + player.id.ToString()))
+            {
+                if (status == StationStatus.Working)
+                {
+
+                    gauge += incrementPerHit / 4;
                 }
             }
         }
