@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DebugMove : MonoBehaviour
 {
+    public int input;
+
     Rigidbody _rigid;
     private float runBoost;
     // Start is called before the first frame update
@@ -16,8 +18,8 @@ public class DebugMove : MonoBehaviour
     void FixedUpdate()
     {
         runBoost = Input.GetKey(KeyCode.LeftShift) ? 10.0f : 5.0f;
-        Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
-        Vector3 rotDir = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")).normalized;
+        Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal" + input), 0.0f, Input.GetAxisRaw("Vertical" + input)).normalized;
+        Vector3 rotDir = new Vector3(Input.GetAxis("Horizontal" + input), 0.0f, Input.GetAxis("Vertical" + input)).normalized;
 
         if (dir.magnitude > 0.5f)
         {
