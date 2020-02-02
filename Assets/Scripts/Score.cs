@@ -30,9 +30,9 @@ public class Score : MonoBehaviour
         textMeshPro.SetText("Score: " + totalScore);
     }
 
-    public void OrderCompleted()
+    public void OrderCompleted(int timeLeft)
     {
-        totalScore += pointsPerOrderCompleted;
+        totalScore += (pointsPerOrderCompleted + timeLeft);
         UpdateText();
     }
 

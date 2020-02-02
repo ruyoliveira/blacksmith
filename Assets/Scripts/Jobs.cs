@@ -6,6 +6,7 @@ public class Jobs : MonoBehaviour
 {
     public GameObject scoreObject;
     public GameObject[] orderPrefabs;
+    public bool orderDissapear = true;
     public float newOrderInterval = 15.0f;
 
     public List<int> orders;
@@ -28,10 +29,13 @@ public class Jobs : MonoBehaviour
     // New orders
     void CreateOrder()
     {
-        int randomOrderNumber = Random.Range(0, 3);
-        Debug.Log(randomOrderNumber);
-        orders.Add((randomOrderNumber + 1) * 100 );
-        GameObject order = Instantiate(orderPrefabs[randomOrderNumber], transform.position, transform.rotation, transform);
+        if (orders.Count < 4)
+        {
+            int randomOrderNumber = Random.Range(0, 3);
+            Debug.Log(randomOrderNumber);
+            orders.Add((randomOrderNumber + 1) * 100);
+            GameObject order = Instantiate(orderPrefabs[randomOrderNumber], transform.position, transform.rotation, transform);
+        }
     }
 
     // Delivered Order
@@ -41,8 +45,9 @@ public class Jobs : MonoBehaviour
         // Check if there's a order pending for this product
         if (orders.Contains(productId)) 
         {
-            score.OrderCompleted();
-            RemoveOrder(orders.IndexOf(productId));
+            int orderIndex = orders.IndexOf(productId);
+            score.OrderCompleted(transform.GetChild(orderIndex).GetComponent<Order>().timeToCompleteOrder);
+            RemoveOrder(orderIndex);
             return true;
         }
         else

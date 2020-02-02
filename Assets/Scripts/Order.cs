@@ -31,12 +31,18 @@ public class Order : MonoBehaviour
     {
         if (timeToCompleteOrder < 1)
         {
-            orders.MissedOrder(transform.GetSiblingIndex());
+            if (orders.orderDissapear)
+            {
+                orders.MissedOrder(transform.GetSiblingIndex());
+            }
         }
         else
         {
-            textMeshPro.SetText(timeToCompleteOrder.ToString());
-            timeToCompleteOrder -= 1;
+            if (timeToCompleteOrder > 0)
+            {
+                textMeshPro.SetText(timeToCompleteOrder.ToString());
+                timeToCompleteOrder -= 1;
+            }
         }
     }
 }
