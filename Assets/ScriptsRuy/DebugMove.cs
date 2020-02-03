@@ -24,11 +24,11 @@ public class DebugMove : MonoBehaviour
         if (dir.magnitude > 0.5f)
         {
             transform.rotation = Quaternion.LookRotation(rotDir);
-            _rigid.velocity = dir * runBoost;
+            _rigid.velocity =  dir  * runBoost  + _rigid.velocity.y * Vector3.up;
         }
         else
         {
-            _rigid.velocity = Vector3.zero;
+            _rigid.velocity = new Vector3(0.0f, _rigid.velocity.y,0.0f);
         }
         
     }
