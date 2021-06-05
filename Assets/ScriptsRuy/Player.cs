@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public GameObject container;
     public LayerMask collisionLayers;
     public Transform containerAnchor;
-
+    public PlayerAnimationController _playerAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,17 +31,21 @@ public class Player : MonoBehaviour
         this.container = obj;
         obj.transform.SetParent(containerAnchor);
         obj.transform.SetPositionAndRotation(containerAnchor.position, containerAnchor.rotation);
+        _playerAnim.Play("grab");
     }
 
     public void DestroyObjectInContainer()
     {
         Destroy(this.container);
-        container = (GameObject)null;
+        ClearContainer();
+
     }
 
     public void ClearContainer()
     {
         container = (GameObject)null;
+        _playerAnim.Stop("grab");
+
     }
     public GameObject CheckInsideContainer()
     {

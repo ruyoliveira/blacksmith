@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4837496288540259076}
   m_Layer: 0
-  m_Name: TableModel
+  m_Name: 3DModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4837496289413837160}
   m_LocalRotation: {x: -0, y: -0.70990205, z: -0, w: 0.7043004}
-  m_LocalPosition: {x: -0.51, y: -2.51, z: 1.06}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4837496288540259076}
@@ -118,7 +118,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1066a071fb0d53b46886887d8c3d491d, type: 3}
+  - {fileID: 2100000, guid: db79189e37e6c144fa9beb1d33529e4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,8 +230,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 1, z: 1.4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.1000001, y: 0.9, z: 1.2000002}
+  m_Center: {x: 0.05000002, y: 0.45, z: 4.656614e-11}
 --- !u!114 &4837496289938898154
 MonoBehaviour:
   m_ObjectHideFlags: 0
